@@ -36,7 +36,7 @@ const Home = () => {
     rotationInterval={4000}
     />
           </div>
-          <p>Discover the </p>
+          <p class="lg:hidden block text-2xl text-white mb-8">Discover the Amazing Experience</p>
           {user._id ? (
             <Link 
               to="/practice" 

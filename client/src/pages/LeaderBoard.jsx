@@ -13,6 +13,7 @@ const LeaderBoard = () => {
     const fetchData = async () => {
         try {
             const response = await Axios({ ...SummeryApi.leaderboard });
+            console.log(response.data.data);
             if (response.data.success) {
                 setData(response.data.data);
             }

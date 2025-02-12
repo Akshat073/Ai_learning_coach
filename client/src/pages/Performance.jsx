@@ -13,7 +13,7 @@ const Performance = () => {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
-            opacity: 1,
+            opacity:1,
             transition: {
                 staggerChildren: 0.2
             }

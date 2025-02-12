@@ -3,10 +3,13 @@ import BookModel from '../components/BookModel'
 import CourseVideos from '../components/CourseVideos'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { useRef } from 'react'
+import RotatingText from '../components/RotatingText'
 
 const Home = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
+  const containerRef = useRef(null);
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -15,8 +18,25 @@ const Home = () => {
           <BookModel />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-          <h1 className="text-6xl font-bold text-white tracking-widest mb-4">Welcome to Kid Tutor</h1>
-          <p className="text-2xl text-gray-200 mb-8">Discover Amazing Experiences</p>
+            <h1 class="text-6xl font-bold text-white tracking-widest mb-4">Welcome to Kid Tutor</h1>
+          <div class="items-center justify-center h-[10%] w-[50%] hidden lg:flex mb-15">
+            <p class="text-2xl font-bold text-white tracking-widest mr-2">Here You Find </p>
+
+  
+  <RotatingText
+    texts={['Interactive Lessons', 'Expert Tutors', 'Personalized Learning', 'Fun Activities']}
+    mainClassName="px-2 text-2xl text-white font-bold sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+    staggerFrom={"last"}
+    initial={{ y: "100%" }}
+    animate={{ y: 0 }}
+    exit={{ y: "-120%" }}
+    staggerDuration={0.025}
+    splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+    transition={{ type: "spring", damping: 30, stiffness: 400 }}
+    rotationInterval={4000}
+    />
+          </div>
+          <p>Discover the </p>
           {user._id ? (
             <Link 
               to="/practice" 

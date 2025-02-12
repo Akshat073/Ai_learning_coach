@@ -7,13 +7,16 @@
             "use": "@vercel/node"
         }
     ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ],
     "rewrites": [
         {
-          "source": "/(.*)",
-          "destination": "/"
+            "source": "/(.*)",
+            "destination": "/"
         }
-      ],
-      "buildCommand": "npm run build",
-      "outputDirectory": "dist"
-    
+    ]
 }

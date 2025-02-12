@@ -14,10 +14,10 @@ dotenv.config();
 const app = express();
 
 // Middleware
-// app.use(cors({
-//   origin: ['https://kid-tutor-5etq.vercel.app', process.env.FRONTEND_URL, 'http://localhost:3000'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: ['https://kid-tutor-5etq.vercel.app', process.env.FRONTEND_URL, 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(helmet({
   crossOriginResourcePolicy: false,
 }));

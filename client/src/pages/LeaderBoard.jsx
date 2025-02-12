@@ -5,6 +5,7 @@ import AxiosToastError from '../utils/AxiosToastError';
 import { TfiCrown } from 'react-icons/tfi';
 import { FiRefreshCw, FiUser } from 'react-icons/fi';
 
+
 const LeaderBoard = () => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);

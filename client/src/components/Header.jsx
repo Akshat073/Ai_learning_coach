@@ -10,6 +10,7 @@ import { LuContact } from "react-icons/lu";
 import { MdAccountCircle } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
 import useIsMobile from '../hooks/useIsMobile';
+import { FaRankingStar } from "react-icons/fa6";
 
 const Header = () => {
     const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -63,7 +64,8 @@ const Header = () => {
                   </Link>)
                   }
                     <Link to="/LeaderBoard" className='text-lg hover:text-blue-600 transition-colors'>
-                        Ranking
+                        <p class="hidden lg:block text-lg">Ranking</p>
+                        <p class="block lg:hidden"><FaRankingStar /></p>
                     </Link>
                     <Link 
                         to="/contact-us" 

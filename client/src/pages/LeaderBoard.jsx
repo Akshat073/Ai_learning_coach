@@ -5,6 +5,8 @@ import AxiosToastError from '../utils/AxiosToastError';
 import { TfiCrown } from 'react-icons/tfi';
 import { FiRefreshCw, FiUser } from 'react-icons/fi';
 
+import {Link} from 'react-router-dom';
+
 
 const LeaderBoard = () => {
     const [loading, setLoading] = useState(true);
@@ -115,7 +117,7 @@ const LeaderBoard = () => {
                                                 className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
                                                 title="View Profile"
                                             >
-                                                <FiUser className={`w-5 h-5 ${index < 3 ? 'text-white' : 'text-indigo-600'}`} />
+                                                <Link to={`/showProfile?id=${user._id}`}><FiUser className={`w-5 h-5 ${index < 3 ? 'text-white' : 'text-indigo-600'}`} /></Link>
                                             </button>
                                         </div>
                                     </div>

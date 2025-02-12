@@ -11,6 +11,8 @@ import TestPage from "../pages/TestPage";
 import Dashboard from "../layout/Dashboard";
 import Profile from "../pages/Profile";
 import Performance from "../pages/Performance";
+import LeaderBoard from "../pages/LeaderBoard";
+import ShowProfile from "../pages/ShowProfile";
 
 
 const router = createBrowserRouter([
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
             {
                 path:"/Practice",
                 element:<Pratice/>
+            },
+            {
+                path:"/LeaderBoard",
+                element:<LeaderBoard/>
+            },
+            {
+                path:"/ShowProfile",
+                element:<ShowProfile/>
             },
             {
                 path:"/dashboard",

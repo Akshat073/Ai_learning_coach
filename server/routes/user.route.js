@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerUserController, verifyEmailController,getUserDetailsController,loginUserController,logoutUserController,uploadImageController,updateUserDetailsController,forgotPasswordController,verifyForgotPasswordController ,resetPasswordController,refreshTokenController,updateAnswerController} from "../controllers/user.controller.js";
+import { registerUserController, verifyEmailController,getUserDetailsController,loginUserController,logoutUserController,uploadImageController,updateUserDetailsController,forgotPasswordController,verifyForgotPasswordController ,resetPasswordController,refreshTokenController,updateAnswerController,getLeaderboardController,showProfileController} from "../controllers/user.controller.js";
 import auth from "../middleware/auth.js";
 import upload from "../middleware/multer.js";
 
@@ -18,5 +18,7 @@ userRouter.put("/reset-password",resetPasswordController);
 userRouter.post("/refresh-token",refreshTokenController);
 userRouter.get("/get-user-details",auth,getUserDetailsController);
 userRouter.put("/update-answers",auth,updateAnswerController);
+userRouter.get("/leaderboard",getLeaderboardController);
+userRouter.get("/show-profile",showProfileController);
 
 export default userRouter;

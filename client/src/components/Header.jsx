@@ -62,7 +62,9 @@ const Header = () => {
                       Practice
                   </Link>)
                   }
-               
+                    <Link to="/LeaderBoard" className='text-lg hover:text-blue-600 transition-colors'>
+                        Ranking
+                    </Link>
                     <Link 
                         to="/contact-us" 
                         className='text-lg hover:text-blue-600 transition-colors'

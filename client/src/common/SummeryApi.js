@@ -44,7 +44,15 @@ const SummeryApi = {
     updateUserDetails: {
         url: 'api/user/update-user',
         method: 'PUT',
-    }
+    },
+    leaderboard: {
+        url: 'api/user/leaderboard',
+        method: 'GET',
+    },
+    showProfile: {
+        url: 'api/user/show-profile',
+        method: 'GET',
+    },
 }
 
 export default SummeryApi

@@ -18,7 +18,7 @@ userRouter.put("/reset-password",resetPasswordController);
 userRouter.post("/refresh-token",refreshTokenController);
 userRouter.get("/get-user-details",auth,getUserDetailsController);
 userRouter.put("/update-answers",auth,updateAnswerController);
-userRouter.get("/leaderboard",getLeaderboardController);
+userRouter.get("/leaderboard", getLeaderboardController);
 userRouter.get("/show-profile",showProfileController);
 
 export default userRouter;

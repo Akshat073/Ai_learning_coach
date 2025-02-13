@@ -31,9 +31,9 @@ const Home = () => {
     animate={{ y: 0 }}
     exit={{ y: "-120%" }}
     staggerDuration={0.025}
-    splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+    splitLevelClassName="overflow-hidden pb-0.5  sm:pb-1 md:pb-1"
     transition={{ type: "spring", damping: 30, stiffness: 400 }}
-    rotationInterval={4000}
+    rotationInterval={2500}
     />
           </div>
           <p class="lg:hidden block text-2xl text-white mb-8">Discover the Amazing Experience</p>

@@ -504,7 +504,7 @@ export const logoutUserController = async (req, res) => {
  export const showProfileController = async (req, res) => {
     try {
         const userId = req.query.id; 
-        const user = await UserModel.findById(userId).select("name correctAnswer wrongAnswer email");
+        const user = await UserModel.findById(userId).select("name correctAnswer wrongAnswer email avatar");
         if (!user) {
             return res.status(400).json({
                 message: "User not found",

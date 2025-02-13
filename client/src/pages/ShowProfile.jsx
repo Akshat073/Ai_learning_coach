@@ -6,7 +6,6 @@ import { FiCheckCircle, FiXCircle, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 
-
 const ShowProfile = () => {
     const [searchParams] = useSearchParams();
     const id = searchParams.get('id');
@@ -27,7 +26,7 @@ const ShowProfile = () => {
                 },
             });
             if (response.data.success) {
-
+                console.log(response.data.data);
                 setUser(response.data.data);
             }
         } catch (error) {
@@ -94,7 +93,11 @@ const ShowProfile = () => {
 
                 <div className="text-center mb-8">
                     <div className="w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <FiUser className="w-12 h-12 text-indigo-600" />
+                        {user.avatar ? (
+                            <img src={user.avatar} alt="User Avatar" className="w-full h-full rounded-full object-cover" />
+                        ) : (
+                            <FiUser className="w-12 h-12 text-indigo-600" />
+                        )}
                     </div>
                     <h1 className="text-3xl font-bold text-gray-800">{user.name}</h1>
                     <p className="text-gray-600 mt-2">{user.email}</p>

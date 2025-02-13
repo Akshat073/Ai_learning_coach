@@ -53,6 +53,10 @@ const SummeryApi = {
         url: 'api/user/show-profile',
         method: 'GET',
     },
+    postcontact:{
+        url: 'api/contact/post-contact',
+        method: 'POST',
+    }
 }
 
 export default SummeryApi

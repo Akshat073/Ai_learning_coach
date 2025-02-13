@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import SummeryApi from '../common/SummeryApi';
+import Axios from '../utils/Axios';
+import emailjs from '@emailjs/browser';
+
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +14,13 @@ const Contact = () => {
         subject: '',
         message: ''
     });
+    const Templates = {
+        from_name: 'Surya (Kid Tutor)',
+        to_name: formData.name,
+        to_email: formData.email,
+        year: new Date().getFullYear(),
+        company_name: 'Kid Tutor',
+    };
     const [loading, setLoading] = useState(false);
 
     const containerVariants = {
@@ -49,14 +60,39 @@ const Contact = () => {
         }
         try {
             setLoading(true);
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            toast.success('Message sent successfully! We will get back to you soon.');
-            setFormData({
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            });
+            const response = await Axios({
+                ...SummeryApi.postcontact,
+                data: {
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                }
+            })
+            console.log(response);
+            if (response.data.success) {
+                emailjs
+                    .send('service_nrj1ns5', 'template_t7t9bbr', Templates, {
+                        publicKey: 'NGSr2K5ribYEjAk_V',
+                    })
+                    .then(
+                        () => {
+                            console.log('SUCCESS!');
+                        },
+                        (error) => {
+                            console.log('FAILED...', error);
+                        }
+                    );
+                toast.success('Message sent successfully! We will get back to you soon.');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                toast.error(response.data.message || 'Failed to send message');
+            }
         } catch (error) {
             toast.error('Failed to send message. Please try again.');
         } finally {

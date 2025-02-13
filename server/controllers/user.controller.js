@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import generateAccessToken from "../utils/generateAccessToken.js";
 import generateRefreshToken from "../utils/generateRefreshToken.js";
 import uploadImageCloudnary from "../utils/uploadImageCloudnary.js";
+import ContactModel from "../models/contact.model.js";
 
 dotenv.config();
 
@@ -527,4 +528,36 @@ export const logoutUserController = async (req, res) => {
         });
     }
 };
+
+
+export const createContact = async (req, res) => {
+    try {
+
+        if (!req.body.name ||!req.body.email ||!req.body.subject ||!req.body.message) {
+            return res.status(400).json({ 
+                message: "All fields are required",
+                success: false,
+                error: true,
+             });
+
+        }
+        const contact = new ContactModel(req.body);
+        
+        const data = await contact.save();
+        res.status(201).json({
+            message: "Contact created successfully",
+            data: data,
+            success: true,
+            error: false,
+            });
+    } catch (error) {
+        res.status(400).json({ 
+            message: error.message ,
+            success: false,
+            error: true,
+        });
+    }
+};
+
+
 

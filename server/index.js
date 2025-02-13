@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import connectDB from './config/connectDB.js';
 import userRouter from './routes/user.route.js';
+import contactRouter from './routes/contact.route.js';
 
 // Load environment variables
 dotenv.config();
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/user', userRouter);
+app.use('/api/contact', contactRouter);
 
 // Start server
 const PORT = process.env.PORT || 8080;

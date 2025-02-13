@@ -54,7 +54,7 @@ const SummeryApi = {
         method: 'GET',
     },
     postcontact:{
-        url: 'api/user/post-contact',
+        url: 'api/contact/post-contact',
         method: 'POST',
     }
 }

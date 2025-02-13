@@ -16,7 +16,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['https://kid-tutor-5etq.vercel.app', process.env.FRONTEND_URL, 'http://localhost:3000'],
+  origin: true, // Allow requests from any origin
   credentials: true
 }));
 app.use(helmet({

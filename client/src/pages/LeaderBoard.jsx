@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Axios from '../utils/Axios';
-import SummeryApi from '../common/SummeryApi';
 import AxiosToastError from '../utils/AxiosToastError';
 import { TfiCrown } from 'react-icons/tfi';
 import { FiRefreshCw, FiUser } from 'react-icons/fi';
-
-import {Link} from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const LeaderBoard = () => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [isRefreshing, setIsRefreshing] = useState(false);
+    const navigate = useNavigate();
 
     const fetchData = async () => {
         try {
@@ -37,7 +35,7 @@ const LeaderBoard = () => {
     };
 
     const handleProfileClick = (userId) => {
-        window.location.href = `/showProfile?id=${userId}`;
+        navigate(`/showProfile?id=${userId}`);
     };
 
     const getRankColor = (index) => {
@@ -53,7 +51,7 @@ const LeaderBoard = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto"> {/* Increased width */}
+            <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-2">
                         <TfiCrown className="text-yellow-400 animate-bounce" />
@@ -72,11 +70,11 @@ const LeaderBoard = () => {
 
                 <div className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
                     <div className="bg-gradient-to-r from-indigo-500 to-blue-500 p-6">
-                        <div className="grid grid-cols-4 text-white font-bold text-lg"> {/* Added 4th column */}
+                        <div className="grid grid-cols-4 text-white font-bold text-lg">
                             <span>Rank</span>
                             <span>Name</span>
                             <span className="text-right">Score</span>
-                            <span className="text-right">Profile</span> {/* New column header */}
+                            <span className="text-right">Profile</span>
                         </div>
                     </div>
 
@@ -93,7 +91,7 @@ const LeaderBoard = () => {
                                     key={user._id}
                                     className={`group transform transition-all duration-200 hover:scale-[1.02] hover:shadow-md ${index < 3 ? 'bg-gradient-to-r' : ''} ${getRankColor(index)}`}
                                 >
-                                    <div className="grid grid-cols-4 items-center p-6"> {/* Added 4th column */}
+                                    <div className="grid grid-cols-4 items-center p-6">
                                         <div className="flex items-center space-x-4">
                                             <span className={`font-bold ${index < 3 ? 'text-white' : 'text-gray-700'}`}>
                                                 #{index + 1}
@@ -117,7 +115,7 @@ const LeaderBoard = () => {
                                                 className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
                                                 title="View Profile"
                                             >
-                                                <Link to={`/showProfile?id=${user._id}`}><FiUser className={`w-5 h-5 ${index < 3 ? 'text-white' : 'text-indigo-600'}`} /></Link>
+                                                <FiUser className={`w-5 h-5 ${index < 3 ? 'text-white' : 'text-indigo-600'}`} />
                                             </button>
                                         </div>
                                     </div>

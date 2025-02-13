@@ -45,11 +45,11 @@ const router = createBrowserRouter([
                 element:<Pratice/>
             },
             {
-                path:"/LeaderBoard",
+                path:"/leaderBoard",
                 element:<LeaderBoard/>
             },
             {
-                path:"/ShowProfile",
+                path:"/showProfile",
                 element:<ShowProfile/>
             },
             {

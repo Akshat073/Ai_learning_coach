@@ -63,7 +63,7 @@ const Header = () => {
                       Practice
                   </Link>)
                   }
-                    <Link to="/LeaderBoard" className='text-lg hover:text-blue-600 transition-colors'>
+                    <Link to="/leaderBoard" className='text-lg hover:text-blue-600 transition-colors'>
                         <p class="hidden lg:block text-lg">Ranking</p>
                         <p class="block lg:hidden"><FaRankingStar /></p>
                     </Link>

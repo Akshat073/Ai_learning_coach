@@ -6,7 +6,6 @@ import dotenv from "dotenv";
 import generateAccessToken from "../utils/generateAccessToken.js";
 import generateRefreshToken from "../utils/generateRefreshToken.js";
 import uploadImageCloudnary from "../utils/uploadImageCloudnary.js";
-import ContactModel from "../models/contact.model.js";
 
 dotenv.config();
 
@@ -36,17 +35,9 @@ export const registerUserController = async (req, res) => {
         const newUser = new UserModel({ name, email, password: hashedPassword });
         const savedUser = await newUser.save();
         
-        const verifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${savedUser._id}`;
         
-        const verifyEmail=await sendEmail({
-            sendTo: email,
-            subject: "Verify your email",
-            html: verifyEmailTemplate({
-                name,
-                url:verifyEmailUrl
-            }),
-            
-        });
+        
+        
 
         const accessToken = await generateAccessToken(savedUser._id);
         const refreshToken = await generateRefreshToken(savedUser._id);
@@ -458,6 +449,7 @@ export const logoutUserController = async (req, res) => {
          });
      }
  }
+
  export const updateAnswerController = async (req, res) => {
     try{
         const userId = req.userId;
@@ -485,6 +477,7 @@ export const logoutUserController = async (req, res) => {
         });
     }
  }
+
  export const getLeaderboardController = async (req, res) => {
     try{
         const users = await UserModel.find().sort({correctAnswer:-1}).select("name correctAnswer");
@@ -502,6 +495,7 @@ export const logoutUserController = async (req, res) => {
         });
     }
  }
+
  export const showProfileController = async (req, res) => {
     try {
         const userId = req.query.id; 
@@ -523,36 +517,6 @@ export const logoutUserController = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             message: error.message || "Internal server error",
-            success: false,
-            error: true,
-        });
-    }
-};
-
-
-export const createContact = async (req, res) => {
-    try {
-
-        if (!req.body.name ||!req.body.email ||!req.body.subject ||!req.body.message) {
-            return res.status(400).json({ 
-                message: "All fields are required",
-                success: false,
-                error: true,
-             });
-
-        }
-        const contact = new ContactModel(req.body);
-        
-        const data = await contact.save();
-        res.status(201).json({
-            message: "Contact created successfully",
-            data: data,
-            success: true,
-            error: false,
-            });
-    } catch (error) {
-        res.status(400).json({ 
-            message: error.message ,
             success: false,
             error: true,
         });

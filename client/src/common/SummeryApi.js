@@ -68,6 +68,10 @@ const SummeryApi = {
     replyMailById: {
         url: 'api/contact/reply-mail',
         method: 'PUT',
+    },
+    verifyEmail: {
+        url: 'api/user/verify-email/:code',
+        method: 'POST',
     }
 }
 

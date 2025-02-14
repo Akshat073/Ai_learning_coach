@@ -93,11 +93,11 @@ const Login = () => {
                             }
                         </div>
 
-                        <p className='text-center text-gray-500'>
+                        {/* <p className='text-center text-gray-500'>
                             <Link to="/forgot-password" className='ml-auto p-0 hover:text-primary-200'>
                                 Forgot Password?
                             </Link>
-                        </p>
+                        </p> */}
                         <button 
                             disabled={!validateData || loading} 
                             type="submit" 

@@ -9,7 +9,7 @@ import SummeryApi from '../common/SummeryApi';
 import { useDispatch } from 'react-redux';
 import { setUserDetails } from '../store/userSlice';
 import { fetchUserDetail } from '../utils/fetchUserDetail';
-
+import emailjs from '@emailjs/browser';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Register = () => {
         password: "",
         confirmPassword: ""
     })
+    const Frontend_key = import.meta.env.VITE_FRONTEND_URL;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -34,6 +35,7 @@ const Register = () => {
 
     const validateData = Object.values(data).every(value => value)
 
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -54,7 +56,28 @@ const Register = () => {
             })
 
             if (response.data.success) {
-                console.log(response.data.data);
+                const verifyEmailUrl = `${Frontend_key}/verify-email?code=${response.data.data._id}`;
+                
+                const template = {
+                    from_name : 'surya (Kid Tutor)',
+                    to_name : response.data.data.name,
+                    to_email : response.data.data.email,
+                    verification_link : verifyEmailUrl,
+                }
+                
+                console.log(template);
+                emailjs
+                    .send('service_bt497p6', 'template_kpqymxb', template, {
+                        publicKey: 'C6F0vjxXkp0ZmjA2w',
+                    })
+                    .then(
+                        () => {
+                            console.log('SUCCESS!');
+                        },
+                        (error) => {
+                            console.log('FAILED...', error);
+                        }
+                    );
                 // Store tokens
                 localStorage.setItem("accessToken", response.data.data.accessToken)
                 localStorage.setItem("refreshToken", response.data.data.refreshToken)

@@ -18,9 +18,9 @@ const Home = () => {
           <BookModel />
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-            <h1 class="text-6xl font-bold text-white tracking-widest mb-4">Welcome to Kid Tutor</h1>
-          <div class="items-center justify-center h-[10%] w-[50%] hidden lg:flex mb-15">
-            <p class="text-2xl font-bold text-white tracking-widest mr-2">Here You Find </p>
+            <h1 className="text-6xl font-bold text-white tracking-widest mb-4">Welcome to Kid Tutor</h1>
+          <div className="items-center justify-center h-[10%] w-[50%] hidden lg:flex mb-15">
+            <p className="text-2xl font-bold text-white tracking-widest mr-2">Here You Find </p>
 
   
   <RotatingText
@@ -36,7 +36,7 @@ const Home = () => {
     rotationInterval={2500}
     />
           </div>
-          <p class="lg:hidden block text-2xl text-white mb-8">Discover the Amazing Experience</p>
+          <p className="lg:hidden block text-2xl text-white mb-8">Discover the Amazing Experience</p>
           {user._id ? (
             <Link 
               to="/practice" 

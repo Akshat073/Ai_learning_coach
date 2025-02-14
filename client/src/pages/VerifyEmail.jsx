@@ -26,10 +26,10 @@ const VerifyEmail = () => {
 
             try {
                 const response = await Axios({
-                    url: SummeryApi.verifyEmail.url.replace(':code', code),
-                    method: SummeryApi.verifyEmail.method,
-                    data: { code }
+                    ...SummeryApi.verifyEmail,
+                    data: { code: code }
                 });
+                console.log(response.data);
                 
                 if (response.data.success) {
                     setVerificationStatus('success');

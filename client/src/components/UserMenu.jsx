@@ -55,8 +55,8 @@ const UserMenu = ({handleCloseAccount = () => {}}) => {
                 <div className='flex flex-col justify-normal items-start gap-2'>
                     {isAdmin(user.role) && (
                         <>
-                            <div onClick={() => handleLinkClick("/dashboard/category")} className='text-sm text-gray-500 hover:bg-orange-100 px-3 py-2 rounded-md w-full cursor-pointer transition-colors'>
-                                Add Course
+                            <div onClick={() => handleLinkClick("/dashboard/reply-mail")} className='text-sm text-gray-500 hover:bg-orange-100 px-3 py-2 rounded-md w-full cursor-pointer transition-colors'>
+                                Reply Mails
                             </div>
                         </>
                     )}

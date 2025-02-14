@@ -17,6 +17,14 @@ const contactSchema = new Schema({
         type: String,
         required: [true, "Message is required"],
     },
+    isReplyed: {
+        type: Boolean,
+        default: false,
+    },
+    reply:{
+        type: String,
+        default: null,
+    }
 }, {
     timestamps: true,
 });

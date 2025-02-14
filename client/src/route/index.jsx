@@ -13,6 +13,7 @@ import Profile from "../pages/Profile";
 import Performance from "../pages/Performance";
 import LeaderBoard from "../pages/LeaderBoard";
 import ShowProfile from "../pages/ShowProfile";
+import ReplyMail from "../pages/ReplyMail";
 
 
 const router = createBrowserRouter([
@@ -63,7 +64,11 @@ const router = createBrowserRouter([
                     {
                         path:"performance",
                         element:<Performance/>
-                    }
+                    },
+                    {
+                        path:"reply-mail",
+                        element:<ReplyMail/>
+                    },
                 ]
             },  
         ],

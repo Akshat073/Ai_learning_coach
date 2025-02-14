@@ -56,6 +56,18 @@ const SummeryApi = {
     postcontact:{
         url: 'api/contact/post-contact',
         method: 'POST',
+    },
+    getMail:{
+        url: 'api/contact/get-all-mail',
+        method: 'GET',
+    },
+    deleteMail: {
+        url: 'api/contact/delete-mail',
+        method: 'DELETE',
+    },
+    replyMailById: {
+        url: 'api/contact/reply-mail',
+        method: 'PUT',
     }
 }
 

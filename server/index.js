@@ -22,7 +22,7 @@ app.use(cors({
 app.use(helmet({
   crossOriginResourcePolicy: false,
 }));
-app.use(morgan('dev'));
+app.use(morgan());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

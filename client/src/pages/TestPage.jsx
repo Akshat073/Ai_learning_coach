@@ -34,7 +34,7 @@ const TestPage = () => {
 
         // Initialize Gemini AI
         const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); // Use a valid model
 
         // Create prompt for generating questions
         const prompt = `Create 10 multiple choice questions about "${topic}". Return ONLY a JSON array with no additional text or formatting. Each object in the array should have exactly these properties:
